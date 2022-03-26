@@ -1,0 +1,165 @@
+import TextField from "@mui/material/TextField";
+import { useQuery } from "react-query";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Paper from "@mui/material/Paper";
+import AddIcon from "@mui/icons-material/Add";
+import styled from "styled-components";
+import { useRef } from "react";
+import { el } from "date-fns/locale";
+
+const PaperContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  flex-wrap: wrap;
+  background-color: black;
+  justify-content: space-around;
+  overflow: hidden;
+  margin: 30px;
+`;
+const CompareContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%
+`;
+
+
+const Paperh3 = styled.h3`
+margin-top:5px;
+color:#f5f6fa;
+
+
+`
+function Compare(props) {
+  const [input, setInput] = useState("");
+  const [bestMatch, setBestMatch] = useState([]);
+
+  const textRefs = useRef([]);
+  useEffect(() => {
+    textRefs.current = textRefs.current.slice(0, bestMatch.length);
+  }, [bestMatch]);
+
+  let nameArr;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    refetch();
+    console.log(data.data);
+    setBestMatch(data.data.bestMatches);
+  };
+
+  const inputHandler = (e) => {
+    setInput(e.target.value);
+  };
+
+  const clickHandler = (e) => {
+    props.clickhandler();
+
+   
+  };
+
+  const { data, error, refetch } = useQuery(["Searchinput stuff", input], () =>
+    axios(
+      `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${input}&apikey=${process.env.REACT_APP_STOCK_API_KEY}`,
+      {
+        refetchOnWindowFocus: false,
+        enabled: false,
+      }
+    )
+  );
+
+  return (
+    <CompareContainer >
+      <Container component="main" maxWidth="xs" >
+        <CssBaseline />
+
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            border:"1px solid blue",
+          }}
+        >
+          <Typography component="h1" variant="h5">
+            Add Stock
+          </Typography>
+          <Box
+            onSubmit={handleSubmit}
+            component="form"
+            noValidate
+            sx={{ mt: 5 }}
+          >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="symbol"
+              label="Stock Symbol / Stock Name"
+              name="stock"
+              autoComplete="stock"
+              autoFocus
+              onChange={inputHandler}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2}}
+            >
+              Search Stock
+            </Button>
+          </Box>
+        </Box>
+      </Container>
+      
+      <PaperContainer >
+        {bestMatch.map((ele, i) => {
+          return (
+            <Paper
+              sx={{
+                bgcolor: "#2c3e50",
+                m: "10px",
+                width: "250px",
+                mb: "50px",
+                display:"flex",
+                flexDirection:"column",
+                alignItems:"center",
+
+              }}
+            >
+              <Paperh3 ref={(el) => (textRefs.current[i] = el)}>
+                {ele["1. symbol"]}
+              </Paperh3>
+              <Paperh3>{ele["2. name"]}</Paperh3>
+              <Paperh3>{ele["3. type"]}</Paperh3>
+              <Paperh3>{ele["4. region"]}</Paperh3>
+              <Paperh3>{ele["8. currency"]}</Paperh3>
+              <Button
+                sx={{ bgcolor: "darkblue", width: "100%" }}
+                variant="contained"
+                onClick={()=>props.handleArray(ele["1. symbol"])}
+              >
+                <AddIcon />
+                Add to Dashboard
+              </Button>
+            </Paper>
+          );
+        })} 
+      </PaperContainer>
+  
+    </CompareContainer>
+  );
+}
+
+export default Compare;
+
+//https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=tesco&apikey=demo
