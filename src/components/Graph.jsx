@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { format, subDays} from "date-fns";
+import { format, subDays } from "date-fns";
 import {
   Chart as ChartJS,
   LineElement,
@@ -12,7 +12,6 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
-
 
 ChartJS.register(
   CategoryScale,
@@ -33,10 +32,10 @@ function Graph() {
       setHistData(res.data);
     });
   }, []);
-  
+
   const closes = [];
   const dates = [];
-  histData.forEach(el => {
+     histData.forEach((el) => {
     const histDate = el["date"].slice(0, 10);
     dates.push(histDate);
     const histClose = +el["adjClose"].toFixed(2);
