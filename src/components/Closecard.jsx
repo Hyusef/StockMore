@@ -17,16 +17,17 @@ const Cost = styled.h4`
   color: #118c4f;
 `;
 
-function Closecard(props) {
+function Closecard({symbol}) {
   const [quotesData, setQuotesData] = useState([]);
 
   useEffect(() => {
     axios
-      .get("/quotes",{params:"FB"})
+      .get("/quotes", { params: symbol })
       .then((res) => {
         setQuotesData(res.data);
       })
       .catch((err) => console.log(err));
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log(quotesData);
@@ -51,8 +52,8 @@ function Closecard(props) {
             {quotesData.fullExchangeName} | {quotesData.currency}
           </h4>
           {quotesData.region}
-          <Cost className="banana">{quotesData.regularMarketPrice}</Cost>
-          <Graph />
+          <Cost className="">{quotesData.regularMarketPrice}</Cost>
+          <Graph symbol={symbol} />
         </Card>
       </Wrapper>
     </div>
