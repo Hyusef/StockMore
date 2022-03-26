@@ -22,12 +22,12 @@ ChartJS.register(
   Legend
 );
 
-function Graph() {
+function Graph({symbol}) {
   const [histData, setHistData] = useState([]);
 
   useEffect(() => {
     const pastWeek = format(subDays(new Date(), 7), "yyyy-MM-dd");
-    const option = ["Ibm", pastWeek];
+    const option = [symbol, pastWeek];
     axios.get("/stock", { params: option }).then((res) => {
       setHistData(res.data);
     });
