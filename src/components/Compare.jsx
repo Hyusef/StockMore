@@ -1,7 +1,7 @@
 import TextField from "@mui/material/TextField";
 import { useQuery } from "react-query";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef,useCallback } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -10,7 +10,6 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import AddIcon from "@mui/icons-material/Add";
 import styled from "styled-components";
-import { useRef } from "react";
 import { el } from "date-fns/locale";
 
 const PaperContainer = styled.div`
@@ -39,41 +38,59 @@ color:#f5f6fa;
 `
 function Compare(props) {
   const [input, setInput] = useState("");
-  const [bestMatch, setBestMatch] = useState([]);
-
+  const [searchData,setSearchData] = useState("")
+  const inputsref = useRef('')
   const textRefs = useRef([]);
-  useEffect(() => {
-    textRefs.current = textRefs.current.slice(0, bestMatch.length);
-  }, [bestMatch]);
 
-  let nameArr;
+
+  let bestMatch = [];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    refetch();
-    console.log(data.data);
-    setBestMatch(data.data.bestMatches);
+    setInput(inputsref.current.value)
+    bestMatch=[]
   };
 
-  const inputHandler = (e) => {
-    setInput(e.target.value);
-  };
+
+
+
 
   const clickHandler = (e) => {
     props.clickhandler();
-
-   
   };
+  useEffect(() => {
+    axios
+      .get("/search", { params:input})
+      .then((res) => {
+        setSearchData(res.data);
+      })
+      .catch((err) => console.log(err));
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      
+  },[input]);
 
-  const { data, error, refetch } = useQuery(["Searchinput stuff", input], () =>
-    axios(
-      `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${input}&apikey=${process.env.REACT_APP_STOCK_API_KEY}`,
-      {
-        refetchOnWindowFocus: false,
-        enabled: false,
-      }
-    )
-  );
+
+
+
+if(searchData){
+  searchData.quotes.map(ele=>{
+    if(ele["isYahooFinance"]=== true){
+      bestMatch.push(ele)
+    }
+
+})
+
+}
+console.log(bestMatch)
+
+
+
+
+
+
+
+
+
 
   return (
     <CompareContainer >
@@ -107,7 +124,7 @@ function Compare(props) {
               name="stock"
               autoComplete="stock"
               autoFocus
-              onChange={inputHandler}
+              inputRef={inputsref}
             />
             <Button
               type="submit"
@@ -136,17 +153,15 @@ function Compare(props) {
 
               }}
             >
-              <Paperh3 ref={(el) => (textRefs.current[i] = el)}>
-                {ele["1. symbol"]}
-              </Paperh3>
-              <Paperh3>{ele["2. name"]}</Paperh3>
-              <Paperh3>{ele["3. type"]}</Paperh3>
-              <Paperh3>{ele["4. region"]}</Paperh3>
-              <Paperh3>{ele["8. currency"]}</Paperh3>
+              
+              <Paperh3>{ele["exchange"]}</Paperh3>
+              <Paperh3>{ele["shortname"]}</Paperh3>
+              <Paperh3>{ele["symbol"]}</Paperh3>
+
               <Button
                 sx={{ bgcolor: "darkblue", width: "100%" }}
                 variant="contained"
-                onClick={()=>props.handleArray(ele["1. symbol"])}
+                onClick={()=>props.handleArray(ele["symbol"])}
               >
                 <AddIcon />
                 Add to Dashboard
