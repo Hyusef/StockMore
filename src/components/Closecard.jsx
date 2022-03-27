@@ -17,20 +17,22 @@ const Cost = styled.h4`
   color: #118c4f;
 `;
 
-function Closecard({symbol}) {
+function Closecard({ symbol }) {
   const [quotesData, setQuotesData] = useState([]);
+  const [isLoading, setIsLoading] = useState([]);
 
   useEffect(() => {
     axios
       .get("/quotes", { params: symbol })
       .then((res) => {
         setQuotesData(res.data);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
       })
       .catch((err) => console.log(err));
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(quotesData);
 
   return (
     <div>
@@ -45,15 +47,20 @@ function Closecard({symbol}) {
             width: "250px",
           }}
         >
-          <h3>
-            {quotesData.symbol} | {quotesData.longName}
-          </h3>
-          <h4>
-            {quotesData.fullExchangeName} | {quotesData.currency}
-          </h4>
-          {quotesData.region}
-          <Cost className="">{quotesData.regularMarketPrice}</Cost>
-          <Graph symbol={symbol} />
+          {isLoading && <CircularProgress />}
+          {!isLoading && (
+            <>
+              <h3>
+                {quotesData.symbol} | {quotesData.longName}
+              </h3>
+              <h4>
+                {quotesData.fullExchangeName} | {quotesData.currency}
+              </h4>
+              {quotesData.region}
+              <Cost className="">{quotesData.regularMarketPrice}</Cost>
+              <Graph symbol={symbol} />
+            </>
+          )}
         </Card>
       </Wrapper>
     </div>
