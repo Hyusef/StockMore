@@ -2,38 +2,55 @@ import React from "react";
 import Closecard from "./Closecard";
 import styled from "styled-components";
 import { useState } from "react";
+import Button from "@mui/material/Button";
 
 const CloseCardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
+  width: 70vw;
   justify-content: space-between;
-  .hide {
-    display: hidden;
+
+  box-sizing: border-box;
+`;
+
+const Flexdiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+
+  button {
+    margin: 15px;
   }
 `;
 
 function Mainstocks({ stockArr }) {
   const [showMore, setShowMore] = useState(false);
   const fragmentArr = stockArr.slice(0, 3);
-  console.log(fragmentArr, stockArr, showMore);
 
   const showHandler = () => {
     setShowMore(!showMore);
   };
 
   return (
-    <CloseCardWrapper>
-      {!showMore &&
-        fragmentArr.map((el) => {
-          return <Closecard key={el} symbol={el} />;
-        })}
-      {showMore &&
-        stockArr.map((el) => {
-          return <Closecard key={el} symbol={el} />;
-        })}
-      <button onClick={showHandler}>{showMore ? "Hide" : "Show more"}</button>
-    </CloseCardWrapper>
+    <Flexdiv>
+      <CloseCardWrapper>
+        {!showMore &&
+          fragmentArr.map((el) => {
+            return <Closecard key={el} symbol={el} />;
+          })}
+        {showMore &&
+          stockArr.map((el) => {
+            return <Closecard key={el} symbol={el} />;
+          })}
+      </CloseCardWrapper>
+      <div>
+        {stockArr.length > 3 && (
+          <Button variant="text" onClick={showHandler}>
+            {showMore ? "Hide" : "Show more"}
+          </Button>
+        )}
+      </div>
+    </Flexdiv>
   );
 }
 
