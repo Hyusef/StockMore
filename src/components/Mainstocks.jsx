@@ -7,9 +7,8 @@ import Button from "@mui/material/Button";
 const CloseCardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 70vw;
-  justify-content: space-between;
-
+  width: 75vw;
+  justify-content: flex-start;
   box-sizing: border-box;
 `;
 
@@ -17,7 +16,6 @@ const Flexdiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
-
   button {
     margin: 15px;
   }

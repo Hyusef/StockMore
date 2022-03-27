@@ -30,7 +30,7 @@ const Cost = styled.h4`
     `;
     if (props.myProps === "red")
       return `
-      color:red;
+      color:#781202;
     `;
   }}
 `;
@@ -52,7 +52,6 @@ function Closecard({ symbol }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(quotesData);
   let isBullish = false;
   const qts = quotesData.regularMarketPrice;
   const pqts = quotesData.regularMarketPreviousClose;
@@ -87,7 +86,7 @@ function Closecard({ symbol }) {
               <CostWrapper>
                 <Cost myProps={`${isBullish ? "green" : "red"}`}>{qts}</Cost>
                 {isBullish && <ArrowUpwardIcon sx={{ color: "#03a811" }} />}
-                {!isBullish && <ArrowDownwardIcon sx={{ color: "red" }} />}
+                {!isBullish && <ArrowDownwardIcon sx={{ color: "#781202" }} />}
               </CostWrapper>
               <Graph symbol={symbol} />
             </>

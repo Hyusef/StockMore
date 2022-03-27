@@ -11,6 +11,7 @@ import Paper from "@mui/material/Paper";
 import AddIcon from "@mui/icons-material/Add";
 import styled from "styled-components";
 import { el } from "date-fns/locale";
+import Swal from "sweetalert2"
 
 const PaperContainer = styled.div`
   display: flex;
@@ -36,6 +37,7 @@ const Paperh3 = styled.h3`
 function Compare(props) {
   const [input, setInput] = useState("");
   const [searchData, setSearchData] = useState("");
+  const [open, setOpen] = useState(false);
   const inputsref = useRef("");
 
   let bestMatch = [];
@@ -59,6 +61,9 @@ function Compare(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
 
+
+
+
   if (searchData) {
     searchData.quotes.map((ele) => {
       if (ele["isYahooFinance"] === true) {
@@ -66,6 +71,15 @@ function Compare(props) {
       }
     });
   }
+
+const handleAlert = (symbol)=>{
+  Swal.fire({
+    title: "Sucess",
+    html: `Added ${symbol} To Dashboard`,
+    timer: 1500,
+    timerProgressBar: true 
+  })
+}
 
   return (
     <CompareContainer>
@@ -113,12 +127,16 @@ function Compare(props) {
         </Box>
       </Container>
       {searchData
+
         ? searchData.quotes.length == 0 && <h1>Enter valid symbol</h1>
         : 0}
+
+        
       <PaperContainer>
         {bestMatch.map((ele, i) => {
           return (
             <Paper
+            key={i}
               sx={{
                 bgcolor: "#2c3e50",
                 m: "10px",
@@ -129,7 +147,7 @@ function Compare(props) {
                 flexDirection: "column",
                 alignItems: "center",
               }}
-            >
+              >
               <Paperh3>{ele["exchange"]}</Paperh3>
               <Paperh3>{ele["shortname"]}</Paperh3>
               <Paperh3>{ele["symbol"]}</Paperh3>
@@ -137,7 +155,7 @@ function Compare(props) {
               <Button
                 sx={{ bgcolor: "darkblue", width: "100%" }}
                 variant="contained"
-                onClick={() => props.handleArray(ele["symbol"])}
+                onClick={() => props.handleArray(ele["symbol"],handleAlert(ele["symbol"]) )}
               >
                 <AddIcon />
                 Add to Dashboard
