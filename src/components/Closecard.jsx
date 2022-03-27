@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { css } from "styled-components";
 import Card from "@mui/material/Card";
 import { useQuery } from "react-query";
 import { subDays, format, getISODay } from "date-fns";
@@ -11,13 +12,16 @@ import axios from "axios";
 const Wrapper = styled.div`
   padding: 5px;
   min-width: 10%;
+  .hide {
+    display: none;
+  }
 `;
 
 const Cost = styled.h4`
   color: #118c4f;
 `;
 
-function Closecard({ symbol }) {
+function Closecard({ symbol, className }) {
   const [quotesData, setQuotesData] = useState([]);
   const [isLoading, setIsLoading] = useState([]);
 
@@ -38,6 +42,7 @@ function Closecard({ symbol }) {
     <div>
       <Wrapper>
         <Card
+          className={className}
           sx={{
             bgcolor: "#08081b",
             color: "#d4d7e6",
@@ -45,6 +50,7 @@ function Closecard({ symbol }) {
             borderRadius: "15px;",
             margin: "10px",
             width: "250px",
+            height: "350px",
           }}
         >
           {isLoading && <CircularProgress />}
