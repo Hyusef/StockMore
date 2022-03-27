@@ -1,7 +1,7 @@
 import TextField from "@mui/material/TextField";
 import { useQuery } from "react-query";
 import axios from "axios";
-import { useState, useEffect,useRef,useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -26,75 +26,52 @@ const CompareContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width:100%
+  width: 100%;
 `;
 
-
 const Paperh3 = styled.h3`
-margin-top:5px;
-color:#f5f6fa;
-
-
-`
+  margin-top: 5px;
+  color: #f5f6fa;
+`;
 function Compare(props) {
   const [input, setInput] = useState("");
-  const [searchData,setSearchData] = useState("")
-  const inputsref = useRef('')
+  const [searchData, setSearchData] = useState("");
+  const inputsref = useRef("");
   const textRefs = useRef([]);
-
 
   let bestMatch = [];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setInput(inputsref.current.value)
-    bestMatch=[]
+    setInput(inputsref.current.value);
+    bestMatch = [];
   };
-
-
-
-
 
   const clickHandler = (e) => {
     props.clickhandler();
   };
   useEffect(() => {
     axios
-      .get("/search", { params:input})
+      .get("/search", { params: input })
       .then((res) => {
         setSearchData(res.data);
       })
       .catch((err) => console.log(err));
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      
-  },[input]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [input]);
 
-
-
-
-if(searchData){
-  searchData.quotes.map(ele=>{
-    if(ele["isYahooFinance"]=== true){
-      bestMatch.push(ele)
-    }
-
-})
-
-}
-console.log(bestMatch)
-
-
-
-
-
-
-
-
-
+  if (searchData) {
+    searchData.quotes.map((ele) => {
+      if (ele["isYahooFinance"] === true) {
+        bestMatch.push(ele);
+      }
+    });
+  }
+  console.log(bestMatch);
 
   return (
-    <CompareContainer >
-      <Container component="main" maxWidth="xs" >
+    <CompareContainer>
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
 
         <Box
@@ -103,7 +80,7 @@ console.log(bestMatch)
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            border:"1px solid blue",
+            border: "1px solid blue",
           }}
         >
           <Typography component="h1" variant="h5">
@@ -130,15 +107,15 @@ console.log(bestMatch)
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2}}
+              sx={{ mt: 3, mb: 2 }}
             >
               Search Stock
             </Button>
           </Box>
         </Box>
       </Container>
-      
-      <PaperContainer >
+
+      <PaperContainer>
         {bestMatch.map((ele, i) => {
           return (
             <Paper
@@ -147,13 +124,11 @@ console.log(bestMatch)
                 m: "10px",
                 width: "250px",
                 mb: "50px",
-                display:"flex",
-                flexDirection:"column",
-                alignItems:"center",
-
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
               }}
             >
-              
               <Paperh3>{ele["exchange"]}</Paperh3>
               <Paperh3>{ele["shortname"]}</Paperh3>
               <Paperh3>{ele["symbol"]}</Paperh3>
@@ -161,16 +136,15 @@ console.log(bestMatch)
               <Button
                 sx={{ bgcolor: "darkblue", width: "100%" }}
                 variant="contained"
-                onClick={()=>props.handleArray(ele["symbol"])}
+                onClick={() => props.handleArray(ele["symbol"])}
               >
                 <AddIcon />
                 Add to Dashboard
               </Button>
             </Paper>
           );
-        })} 
+        })}
       </PaperContainer>
-  
     </CompareContainer>
   );
 }
