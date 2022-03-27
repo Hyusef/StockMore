@@ -12,16 +12,13 @@ import axios from "axios";
 const Wrapper = styled.div`
   padding: 5px;
   min-width: 10%;
-  .hide {
-    display: none;
-  }
 `;
 
 const Cost = styled.h4`
   color: #118c4f;
 `;
 
-function Closecard({ symbol, className }) {
+function Closecard({ symbol }) {
   const [quotesData, setQuotesData] = useState([]);
   const [isLoading, setIsLoading] = useState([]);
 
@@ -32,7 +29,7 @@ function Closecard({ symbol, className }) {
         setQuotesData(res.data);
         setTimeout(() => {
           setIsLoading(false);
-        }, 1000);
+        }, 500);
       })
       .catch((err) => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,7 +39,6 @@ function Closecard({ symbol, className }) {
     <div>
       <Wrapper>
         <Card
-          className={className}
           sx={{
             bgcolor: "#08081b",
             color: "#d4d7e6",

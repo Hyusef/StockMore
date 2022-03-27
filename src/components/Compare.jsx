@@ -37,7 +37,6 @@ function Compare(props) {
   const [input, setInput] = useState("");
   const [searchData, setSearchData] = useState("");
   const inputsref = useRef("");
-  const textRefs = useRef([]);
 
   let bestMatch = [];
 
@@ -67,7 +66,6 @@ function Compare(props) {
       }
     });
   }
-  console.log(bestMatch);
 
   return (
     <CompareContainer>
@@ -114,7 +112,9 @@ function Compare(props) {
           </Box>
         </Box>
       </Container>
-
+      {searchData
+        ? searchData.quotes.length == 0 && <h1>Enter valid symbol</h1>
+        : 0}
       <PaperContainer>
         {bestMatch.map((ele, i) => {
           return (
@@ -124,6 +124,7 @@ function Compare(props) {
                 m: "10px",
                 width: "250px",
                 mb: "50px",
+                height: "190px",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
