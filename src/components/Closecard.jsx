@@ -8,14 +8,31 @@ import Graph from "./Graph";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 const Wrapper = styled.div`
   padding: 5px;
   min-width: 10%;
 `;
 
+const CostWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const Cost = styled.h4`
-  color: #118c4f;
+  ${(props) => {
+    if (props.myProps === "green")
+      return `
+        color: #03a811;
+    
+    `;
+    if (props.myProps === "red")
+      return `
+      color:red;
+    `;
+  }}
 `;
 
 function Closecard({ symbol }) {
@@ -34,6 +51,14 @@ function Closecard({ symbol }) {
       .catch((err) => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  console.log(quotesData);
+  let isBullish = false;
+  const qts = quotesData.regularMarketPrice;
+  const pqts = quotesData.regularMarketPreviousClose;
+  if (qts > pqts) {
+    isBullish = true;
+  }
 
   return (
     <div>
@@ -59,7 +84,11 @@ function Closecard({ symbol }) {
                 {quotesData.fullExchangeName} | {quotesData.currency}
               </h4>
               {quotesData.region}
-              <Cost className="">{quotesData.regularMarketPrice}</Cost>
+              <CostWrapper>
+                <Cost myProps={`${isBullish ? "green" : "red"}`}>{qts}</Cost>
+                {isBullish && <ArrowUpwardIcon sx={{ color: "#03a811" }} />}
+                {!isBullish && <ArrowDownwardIcon sx={{ color: "red" }} />}
+              </CostWrapper>
               <Graph symbol={symbol} />
             </>
           )}
