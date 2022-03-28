@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import styled from "styled-components";
 import CircularProgress from "@mui/material/CircularProgress";
 import Tooltip from "@mui/material/Tooltip";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { isFirstDayOfMonth } from "date-fns";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -32,11 +32,12 @@ const Buttonwrapper = styled.div`
 
 function News() {
   const [page, setPage] = useState(1);
+  const myRef = useRef(null);
   const { data, error, isLoading, isPreviousData } = useQuery(
     ["NewsData", page],
     () =>
       axios(
-        `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.REACT_APP_NEWS_API_KEY }&pagesize=10&page=${page}`
+        `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.REACT_APP_NEWS_API_KEY}&pagesize=10&page=${page}`
       ),
     {
       refetchOnWindowFocus: false,
@@ -48,13 +49,17 @@ function News() {
     setPage(value);
   };
 
+  const scrollToTop = () => {
+    myRef.current.scrollIntoView({ behavior: "smooth", inline: "nearest" });
+  };
+
   if (error) return <h4>Error:{error.message}</h4>;
   if (isLoading)
     return <CircularProgress size={"100px"} sx={{ ml: "35%", mt: "20%" }} />;
 
   return (
     <div>
-      <Wrapper>
+      <Wrapper ref={myRef}>
         {data.data.articles.map((article, index) => {
           return (
             <Card
@@ -98,11 +103,14 @@ function News() {
       <Buttonwrapper>
         <Button
           variant="contained"
-          onClick={() => setPage((old) => Math.max(old - 1, 1))}
+          onClick={() => {
+            setPage((old) => Math.max(old - 1, 1));
+            scrollToTop();
+          }}
           disabled={page === 1}
         >
           <ArrowBackIcon /> Previous Page
-        </Button>{" "}
+        </Button>
         <Pagination
           count={7}
           variant="outlined"
@@ -117,6 +125,7 @@ function News() {
             if (!isPreviousData && page < 7) {
               setPage((old) => old + 1);
             }
+            scrollToTop();
           }}
           disabled={isPreviousData || page === 7}
         >
