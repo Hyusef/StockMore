@@ -3,7 +3,7 @@ import Closecard from "./Closecard";
 import styled from "styled-components";
 import { useState } from "react";
 import Button from "@mui/material/Button";
-
+import Showbutton from "./Showbutton";
 const CloseCardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -23,9 +23,9 @@ const Flexdiv = styled.div`
 
 function Mainstocks({ stockArr }) {
   const [showMore, setShowMore] = useState(false);
-  const fragmentArr = stockArr.slice(0, 3);
 
-  const showHandler = () => {
+  const showHandler = (event) => {
+    event.preventDefault();
     setShowMore(!showMore);
   };
 
@@ -33,7 +33,7 @@ function Mainstocks({ stockArr }) {
     <Flexdiv>
       <CloseCardWrapper>
         {!showMore &&
-          fragmentArr.map((el) => {
+          stockArr.slice(0, 3).map((el) => {
             return <Closecard key={el} symbol={el} />;
           })}
         {showMore &&
