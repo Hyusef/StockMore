@@ -18,23 +18,26 @@ const PaperContainer = styled.div`
   flex-direction: row;
   width: 70%;
   flex-wrap: wrap;
-  border: 1px solid #100061;
-  border-radius: 10px;
   justify-content: center;
   overflow: hidden;
   margin: 80px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   align-items: center;
+  background: #dedede;
 `;
 const StyledPaper = styled(Paper)`
   background: #346beb;
   margin: 10px;
   width: 250px;
   margin-bottom: 50px;
-  height: 170px;
+  height: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  Button {
+    margin-top: auto;
+  }
 `;
 
 const CompareContainer = styled.div`
@@ -52,6 +55,11 @@ const InputSearchBox = styled.div`
   border: 1px solid blue;
 `;
 
+const Addbutton = styled(Button)`
+  background: #c9c9c9;
+  width: 100%;
+  color: black;
+`;
 const Paperh3 = styled.h5`
   margin-top: 5px;
   color: #f5f6fa;
@@ -139,7 +147,7 @@ function Compare(props) {
       </Container>
       {searchData
         ? searchData.quotes.length == 0 && <h1>Enter valid symbol</h1>
-        : 0}
+        : ""}
 
       <PaperContainer>
         {bestMatch.map((ele, i) => {
@@ -149,8 +157,7 @@ function Compare(props) {
               <Paperh3>{ele["shortname"]}</Paperh3>
               <Paperh3>{ele["symbol"]}</Paperh3>
 
-              <Button
-                sx={{ bgcolor: "#c9c9c9", width: "100%", color: "black" }}
+              <Addbutton
                 variant="contained"
                 onClick={() =>
                   props.handleArray(ele["symbol"], handleAlert(ele["symbol"]))
@@ -158,7 +165,7 @@ function Compare(props) {
               >
                 <AddIcon />
                 Add to Dashboard
-              </Button>
+              </Addbutton>
             </StyledPaper>
           );
         })}
