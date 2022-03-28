@@ -48,7 +48,7 @@ const Cost = styled.h4`
   }}
 `;
 
-function Closecard({ symbol }) {
+function Closecard({ symbol,dHand}) {
   const [quotesData, setQuotesData] = useState([]);
   const [isLoading, setIsLoading] = useState([]);
   const [showCard, setShowCard] = useState(false);
@@ -66,13 +66,15 @@ function Closecard({ symbol }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+
+
   let isBullish = false;
   const qts = quotesData.regularMarketPrice;
   const pqts = quotesData.regularMarketPreviousClose;
   if (qts > pqts) {
     isBullish = true;
   }
-  console.log(showCard);
+
 
   return (
     <div>
@@ -109,7 +111,8 @@ function Closecard({ symbol }) {
               </CostWrapper>
               <Graph symbol={symbol} />
               {showCard && (
-                <Button>
+                <Button 
+                  onClick={()=>dHand(quotesData.symbol)}>
                   <DeleteOutlineIcon />
                 </Button>
               )}

@@ -20,9 +20,8 @@ const Flexdiv = styled.div`
   }
 `;
 
-function Mainstocks({ stockArr }) {
+function Mainstocks({ stockArr, dHand }) {
   const [showMore, setShowMore] = useState(false);
-
   const showHandler = (event) => {
     event.preventDefault();
     setShowMore(!showMore);
@@ -33,11 +32,11 @@ function Mainstocks({ stockArr }) {
       <CloseCardWrapper>
         {!showMore &&
           stockArr.slice(0, 3).map((el) => {
-            return <Closecard key={el} symbol={el} />;
+            return <Closecard key={el} symbol={el} dHand={dHand} />;
           })}
         {showMore &&
           stockArr.map((el) => {
-            return <Closecard key={el} symbol={el} />;
+            return <Closecard key={el} symbol={el} dHand={dHand} />;
           })}
       </CloseCardWrapper>
       <div>
