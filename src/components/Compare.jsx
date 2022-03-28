@@ -1,7 +1,7 @@
 import TextField from "@mui/material/TextField";
 import { useQuery } from "react-query";
 import axios from "axios";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -11,18 +11,32 @@ import Paper from "@mui/material/Paper";
 import AddIcon from "@mui/icons-material/Add";
 import styled from "styled-components";
 import { el } from "date-fns/locale";
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 
 const PaperContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 70%;
   flex-wrap: wrap;
-  background-color: black;
-  justify-content: space-around;
+  border: 1px solid #100061;
+  border-radius: 10px;
+  justify-content: center;
   overflow: hidden;
-  margin: 30px;
+  margin: 80px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  align-items: center;
 `;
+const StyledPaper = styled(Paper)`
+  background: #346beb;
+  margin: 10px;
+  width: 250px;
+  margin-bottom: 50px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const CompareContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,7 +44,15 @@ const CompareContainer = styled.div`
   width: 100%;
 `;
 
-const Paperh3 = styled.h3`
+const InputSearchBox = styled.div`
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid blue;
+`;
+
+const Paperh3 = styled.h5`
   margin-top: 5px;
   color: #f5f6fa;
 `;
@@ -61,9 +83,6 @@ function Compare(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
 
-
-
-
   if (searchData) {
     searchData.quotes.map((ele) => {
       if (ele["isYahooFinance"] === true) {
@@ -72,29 +91,21 @@ function Compare(props) {
     });
   }
 
-const handleAlert = (symbol)=>{
-  Swal.fire({
-    title: "Sucess",
-    html: `Added ${symbol} To Dashboard`,
-    timer: 1500,
-    timerProgressBar: true 
-  })
-}
+  const handleAlert = (symbol) => {
+    Swal.fire({
+      title: "Sucess",
+      heightAuto: false,
+      timer: 650,
+      showConfirmButton: false,
+    });
+  };
 
   return (
     <CompareContainer>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
 
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            border: "1px solid blue",
-          }}
-        >
+        <InputSearchBox>
           <Typography component="h1" variant="h5">
             Add Stock
           </Typography>
@@ -124,43 +135,31 @@ const handleAlert = (symbol)=>{
               Search Stock
             </Button>
           </Box>
-        </Box>
+        </InputSearchBox>
       </Container>
       {searchData
-
         ? searchData.quotes.length == 0 && <h1>Enter valid symbol</h1>
         : 0}
 
-        
       <PaperContainer>
         {bestMatch.map((ele, i) => {
           return (
-            <Paper
-            key={i}
-              sx={{
-                bgcolor: "#2c3e50",
-                m: "10px",
-                width: "250px",
-                mb: "50px",
-                height: "190px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-              >
+            <StyledPaper key={i}>
               <Paperh3>{ele["exchange"]}</Paperh3>
               <Paperh3>{ele["shortname"]}</Paperh3>
               <Paperh3>{ele["symbol"]}</Paperh3>
 
               <Button
-                sx={{ bgcolor: "darkblue", width: "100%" }}
+                sx={{ bgcolor: "#c9c9c9", width: "100%", color: "black" }}
                 variant="contained"
-                onClick={() => props.handleArray(ele["symbol"],handleAlert(ele["symbol"]) )}
+                onClick={() =>
+                  props.handleArray(ele["symbol"], handleAlert(ele["symbol"]))
+                }
               >
                 <AddIcon />
                 Add to Dashboard
               </Button>
-            </Paper>
+            </StyledPaper>
           );
         })}
       </PaperContainer>
