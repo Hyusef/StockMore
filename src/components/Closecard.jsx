@@ -10,10 +10,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import Button from "@mui/material/Button";
+import { Textfit } from "react-textfit";
 
 const Wrapper = styled.div`
   padding: 5px;
   min-width: 10%;
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    color: darkred;
+    margin-top: auto;
+  }
 `;
 
 const CostWrapper = styled.div`
@@ -38,6 +51,7 @@ const Cost = styled.h4`
 function Closecard({ symbol }) {
   const [quotesData, setQuotesData] = useState([]);
   const [isLoading, setIsLoading] = useState([]);
+  const [showCard, setShowCard] = useState(false);
 
   useEffect(() => {
     axios
@@ -58,11 +72,14 @@ function Closecard({ symbol }) {
   if (qts > pqts) {
     isBullish = true;
   }
+  console.log(showCard);
 
   return (
     <div>
       <Wrapper>
         <Card
+          onMouseEnter={() => setShowCard(true)}
+          onMouseLeave={() => setShowCard(false)}
           sx={{
             bgcolor: "#08081b",
             color: "#d4d7e6",
@@ -76,9 +93,11 @@ function Closecard({ symbol }) {
           {isLoading && <CircularProgress />}
           {!isLoading && (
             <>
-              <h3>
+              <Textfit mode="multi">
                 {quotesData.symbol} | {quotesData.longName}
-              </h3>
+              </Textfit>
+                
+
               <h4>
                 {quotesData.fullExchangeName} | {quotesData.currency}
               </h4>
@@ -89,6 +108,11 @@ function Closecard({ symbol }) {
                 {!isBullish && <ArrowDownwardIcon sx={{ color: "#781202" }} />}
               </CostWrapper>
               <Graph symbol={symbol} />
+              {showCard && (
+                <Button>
+                  <DeleteOutlineIcon />
+                </Button>
+              )}
             </>
           )}
         </Card>
