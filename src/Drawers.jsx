@@ -50,12 +50,12 @@ const drawer = (
         </StyledLink>
       </ListItem>
 
-      <StyledLink to="/discover">
+      <StyledLink to="/add">
         <ListItem button>
           <ListItemIcon sx={{ color: "#d4d7e6" }}>
             <LightbulbIcon />
           </ListItemIcon>
-          <ListItemText primary="Discover" />
+          <ListItemText primary="Add Stock" />
         </ListItem>
       </StyledLink>
 
