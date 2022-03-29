@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-function Graph({symbol}) {
+function Graph({ symbol }) {
   const [histData, setHistData] = useState([]);
 
   useEffect(() => {
@@ -35,13 +35,14 @@ function Graph({symbol}) {
 
   const closes = [];
   const dates = [];
-     histData.forEach((el) => {
+  histData.forEach((el) => {
     const histDate = el["date"].slice(0, 10);
     dates.push(histDate);
     const histClose = +el["adjClose"].toFixed(2);
     closes.push(histClose);
   });
-
+  //label == stockarr[0]
+  //labels == dates
   return (
     <div>
       <Line
