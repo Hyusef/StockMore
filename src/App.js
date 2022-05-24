@@ -13,12 +13,11 @@ import { useState } from "react";
 
 const queryClient = new QueryClient();
 function App() {
-  const [alert, setAlert] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [stockArr, setStockArr] = useState([]);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const toggleDrawer = (open) => (event) => {
+    setOpen(open);
   };
 
   const handleArray = (ele) => {
@@ -37,13 +36,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <ButtonAppBar handleDrawerToggle={handleDrawerToggle} />
+        <ButtonAppBar toggleDrawer={toggleDrawer} />
         <div className="flexy">
-          <Drawers
-            handleDrawerToggle={handleDrawerToggle}
-            mobileOpen={mobileOpen}
-            alert={alert}
-          />
+          <Drawers toggleDrawer={toggleDrawer} open={open} />
           <Routes>
             <Route
               path="/"

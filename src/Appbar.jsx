@@ -22,7 +22,7 @@ export default function ButtonAppBar(props) {
             color="inherit"
             aria-label="open drawer"
             edge="start"
-            onClick={props.handleDrawerToggle}
+            onClick={props.toggleDrawer(true)}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
             <MenuIcon />

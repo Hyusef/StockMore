@@ -32,68 +32,72 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const drawer = (
-  <Box>
-    <img
-      alt="logo"
-      src={logostock}
-      style={{ width: "200px", padding: "10px" }}
-    ></img>
-    <Divider sx={{ bgcolor: "#4f4f4f" }} />
-    <List>
-      <ListItem button>
-        <StyledLink to="/">
-          <ListItemIcon sx={{ color: "#d4d7e6" }}>
-            <DashboardIcon />
-          </ListItemIcon>
-          <ListItemText primary="Dashboard" />
-        </StyledLink>
-      </ListItem>
-
-      <StyledLink to="/add">
-        <ListItem button>
-          <ListItemIcon sx={{ color: "#d4d7e6" }}>
-            <LightbulbIcon />
-          </ListItemIcon>
-          <ListItemText primary="Add Stock" />
-        </ListItem>
-      </StyledLink>
-
-      <StyledLink to="/compare">
-        <ListItem button>
-          <ListItemIcon sx={{ color: "#d4d7e6" }}>
-            <CompareIcon />
-          </ListItemIcon>
-          <ListItemText primary="Compare" />
-        </ListItem>
-      </StyledLink>
-
-      <StyledLink to="/news">
-        <ListItem button>
-          <ListItemIcon sx={{ color: "#d4d7e6" }}>
-            <FeedIcon />
-          </ListItemIcon>
-          <ListItemText primary="News" />
-        </ListItem>
-      </StyledLink>
-    </List>
-  </Box>
-);
 export default function Drawers(props) {
+  const drawer = (
+    <Box>
+      <img
+        alt="logo"
+        src={logostock}
+        style={{ width: "200px", padding: "10px" }}
+      ></img>
+      <Divider sx={{ bgcolor: "#4f4f4f" }} />
+      <List>
+        <ListItem button onClick={props.toggleDrawer(false)}>
+          <StyledLink to="/">
+            <ListItemIcon sx={{ color: "#d4d7e6" }}>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </StyledLink>
+        </ListItem>
+
+        <StyledLink to="/add">
+          <ListItem button onClick={props.toggleDrawer(false)}>
+            <ListItemIcon sx={{ color: "#d4d7e6" }}>
+              <LightbulbIcon />
+            </ListItemIcon>
+            <ListItemText primary="Add Stock" />
+          </ListItem>
+        </StyledLink>
+
+        <StyledLink to="/compare">
+          <ListItem button onClick={props.toggleDrawer(false)}>
+            <ListItemIcon sx={{ color: "#d4d7e6" }}>
+              <CompareIcon />
+            </ListItemIcon>
+            <ListItemText primary="Compare" />
+          </ListItem>
+        </StyledLink>
+
+        <StyledLink to="/news">
+          <ListItem button onClick={props.toggleDrawer(false)}>
+            <ListItemIcon sx={{ color: "#d4d7e6" }}>
+              <FeedIcon />
+            </ListItemIcon>
+            <ListItemText primary="News" />
+          </ListItem>
+        </StyledLink>
+      </List>
+    </Box>
+  );
   return (
     <Box>
       <Drawer
         anchor="left"
         variant="temporary"
-        open={props.mobileOpen}
-        onClose={props.handleDrawerToggle}
+        open={props.open}
+        onClose={props.toggleDrawer(false)}
         ModalProps={{
           keepMounted: true,
         }}
         sx={{
           flexShrink: 0,
           display: { xs: "block", sm: "none" },
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+          "& .MuiDrawer-paper": {
+            boxSizing: "border-box",
+            width: drawerWidth,
+            bgcolor: "#08081b",
+          },
         }}
       >
         {drawer}
@@ -114,11 +118,6 @@ export default function Drawers(props) {
         open
       >
         {drawer}
-        {props.alert && (
-          <Alert severity="success" sx={{ mt: "50%" }}>
-            Stock Added to Dashboard
-          </Alert>
-        )}
       </Drawer>
     </Box>
   );
