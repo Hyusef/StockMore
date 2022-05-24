@@ -2,15 +2,21 @@ import React from "react";
 import { format, subDays } from "date-fns";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import TextEmpty from './TextEmpty'
 
 import { Line } from "react-chartjs-2";
 import axios from "axios";
 
+
 const StyledContainer = styled.div`
-  width: 80vw;
+  width: 100vw;
   height: 100vh;
   margin: auto;
-  margin-top: 40px;
+  background: #2d3436;
+`;
+
+const LineContainer = styled.div`
+  padding: 20px;
 `;
 
 function Comparestock({ stockArr }) {
@@ -48,8 +54,11 @@ function Comparestock({ stockArr }) {
       label: stockArr[i],
       data: percent,
       borderColor: "#" + Math.floor(Math.random() * 16777215).toString(16),
-      borderWidth: 3,
+      borderWidth: 1.5,
       backgroundColor: "#" + Math.floor(Math.random() * 16777215).toString(16),
+      pointRadius: 3.5,
+      pointHoverBorderColor: "white",
+      pointStyle: "circle",
     });
     percentMain.push(percent);
     closes = [];
@@ -62,7 +71,6 @@ function Comparestock({ stockArr }) {
     .split(",")
     .map((el) => +el);
 
-  //console.log(dates)
   // datasets.map(el=>console.log(el));
 
   //label == stockarr[0]
@@ -93,13 +101,19 @@ function Comparestock({ stockArr }) {
 
   return (
     <StyledContainer>
-      <Line
-        data={{
-          labels: dates.slice(0, 20),
-          datasets: datasets.map((el) => el),
-        }}
-        options={option}
-      />
+      {stocksData.length > 0 ? (
+        <LineContainer>
+          <Line
+            data={{
+              labels: dates.slice(0, 20),
+              datasets: datasets.map((el) => el),
+            }}
+            options={option}
+          />
+        </LineContainer>
+      ) : (
+        <TextEmpty text={'No Stocks To Show.'} />
+      )}
     </StyledContainer>
   );
 }
