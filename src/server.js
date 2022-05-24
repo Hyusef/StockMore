@@ -30,7 +30,6 @@ app.get("/stocks", (req, res) => {
   const date = req.query["1"];
   const queryDate = { period1: date };
   const stocksDataArr = [];
-
   async function getOhlc() {
     const queryOptions = { period1: "2022-02-1" };
 

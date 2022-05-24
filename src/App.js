@@ -10,8 +10,8 @@ import Mainstocks from "./components/Mainstocks";
 import Addstock from "./components/Addstock";
 import Comparestock from "./components/Comparestock";
 import { useState } from "react";
-
 const queryClient = new QueryClient();
+
 function App() {
   const [open, setOpen] = useState(false);
   const [stockArr, setStockArr] = useState([]);
