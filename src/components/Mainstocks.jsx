@@ -3,13 +3,24 @@ import Closecard from "./Closecard";
 import styled from "styled-components";
 import { useState } from "react";
 import Button from "@mui/material/Button";
+import TextEmpty from './TextEmpty'
+
+
 const CloseCardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 75vw;
   justify-content: flex-start;
   box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    justify-content: center;
+    padding: 50px;
+    margin: 25px;
+  }
 `;
+
+
 
 const Flexdiv = styled.div`
   display: flex;
@@ -44,6 +55,10 @@ function Mainstocks({ stockArr, dHand }) {
           <Button variant="text" onClick={showHandler}>
             {showMore ? "Hide" : "Show more"}
           </Button>
+        )}
+
+        {stockArr.length === 0 && (
+          <TextEmpty text={'Your Dashboard is Empty.'} />
         )}
       </div>
     </Flexdiv>
