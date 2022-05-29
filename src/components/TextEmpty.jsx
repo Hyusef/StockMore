@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 const Header = styled.h1`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 2rem;
   font-weight: 700;
   letter-spacing: -0.05em;
@@ -22,7 +22,7 @@ const Header = styled.h1`
 `;
 
 function TextEmpty({ text }) {
-  return <Header>{text}</Header>;
+  return <Header> {text}</Header>;
 }
 
 export default TextEmpty;
