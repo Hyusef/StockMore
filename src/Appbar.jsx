@@ -5,7 +5,6 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Alert from "@mui/material/Alert";
-import { useState } from "react";
 
 export default function ButtonAppBar(props) {
   return (
@@ -32,14 +31,3 @@ export default function ButtonAppBar(props) {
     </Box>
   );
 }
-
-/*
-<IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-           //onClick={handleDrawerToggle} 
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-
-*/

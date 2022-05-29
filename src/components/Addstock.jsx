@@ -1,5 +1,4 @@
 import TextField from "@mui/material/TextField";
-import { useQuery } from "react-query";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import Button from "@mui/material/Button";
@@ -10,7 +9,6 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import AddIcon from "@mui/icons-material/Add";
 import styled from "styled-components";
-import { el } from "date-fns/locale";
 import Swal from "sweetalert2";
 
 const PaperContainer = styled.div`
@@ -67,7 +65,6 @@ const Paperh3 = styled.h5`
 function Compare(props) {
   const [input, setInput] = useState("");
   const [searchData, setSearchData] = useState("");
-  const [open, setOpen] = useState(false);
   const inputsref = useRef("");
   let bestMatch = [];
 
@@ -77,9 +74,6 @@ function Compare(props) {
     bestMatch = [];
   };
 
-  const clickHandler = (e) => {
-    props.clickhandler();
-  };
   useEffect(() => {
     axios
       .get("/search", { params: input })
@@ -98,7 +92,7 @@ function Compare(props) {
     });
   }
 
-  const handleAlert = (symbol) => {
+  const handleAlert = () => {
     Swal.fire({
       title: "Sucess",
       heightAuto: false,
@@ -145,7 +139,7 @@ function Compare(props) {
         </InputSearchBox>
       </Container>
       {searchData
-        ? searchData.quotes.length == 0 && <h1>Enter valid symbol</h1>
+        ? searchData.quotes.length == 0 && <h1>Enter Valid Symbol</h1>
         : ""}
 
       <PaperContainer>
@@ -174,5 +168,3 @@ function Compare(props) {
 }
 
 export default Compare;
-
-//https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=tesco&apikey=demo

@@ -10,7 +10,6 @@ import styled from "styled-components";
 import CircularProgress from "@mui/material/CircularProgress";
 import Tooltip from "@mui/material/Tooltip";
 import { useState, useRef } from "react";
-import { isFirstDayOfMonth } from "date-fns";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Pagination from "@mui/material/Pagination";
@@ -137,4 +136,3 @@ function News() {
 }
 
 export default News;
-//https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey="ugh..."&pagesize=10&page=1

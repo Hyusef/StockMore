@@ -41,8 +41,6 @@ function Graph({ symbol }) {
     const histClose = +el["adjClose"].toFixed(2);
     closes.push(histClose);
   });
-  //label == stockarr[0]
-  //labels == dates
   return (
     <div>
       <Line

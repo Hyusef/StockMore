@@ -9,7 +9,6 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import { Textfit } from "react-textfit";
-
 const Wrapper = styled.div`
   padding: 5px;
   min-width: 10%;
@@ -37,12 +36,10 @@ const Cost = styled.h4`
     `;
   }}
 `;
-
 const CostWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
-
 function CardWrapper({ isLoading, isBullish, qts, symbol, dHand, quotesData }) {
   const [showDel, setshowDel] = useState(false);
   return (

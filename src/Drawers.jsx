@@ -13,8 +13,6 @@ import CompareIcon from "@mui/icons-material/Compare";
 import FeedIcon from "@mui/icons-material/Feed";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Alert from "@mui/material/Alert";
-import { useState } from "react";
 const drawerWidth = 240;
 
 const StyledLink = styled(Link)`
