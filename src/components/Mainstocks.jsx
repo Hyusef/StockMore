@@ -3,8 +3,7 @@ import Closecard from "./Closecard";
 import styled from "styled-components";
 import { useState } from "react";
 import Button from "@mui/material/Button";
-import TextEmpty from './TextEmpty'
-
+import TextEmpty from "./TextEmpty";
 
 const CloseCardWrapper = styled.div`
   display: flex;
@@ -19,8 +18,6 @@ const CloseCardWrapper = styled.div`
     margin: 25px;
   }
 `;
-
-
 
 const Flexdiv = styled.div`
   display: flex;
@@ -56,9 +53,8 @@ function Mainstocks({ stockArr, dHand }) {
             {showMore ? "Hide" : "Show more"}
           </Button>
         )}
-
         {stockArr.length === 0 && (
-          <TextEmpty text={'Your Dashboard is Empty.'} />
+          <TextEmpty text={"Your Dashboard is Empty."} />
         )}
       </div>
     </Flexdiv>
