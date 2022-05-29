@@ -31,7 +31,6 @@ function App() {
     setStockArr(() => stockArr.filter((el) => el != ele));
   };
 
-  console.log(stockArr);
 
   return (
     <QueryClientProvider client={queryClient}>

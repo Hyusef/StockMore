@@ -69,7 +69,6 @@ function Compare(props) {
   const [searchData, setSearchData] = useState("");
   const [open, setOpen] = useState(false);
   const inputsref = useRef("");
-
   let bestMatch = [];
 
   const handleSubmit = (e) => {
