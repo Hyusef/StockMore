@@ -34,10 +34,7 @@ function News() {
   const myRef = useRef(null);
   const { data, error, isLoading, isPreviousData } = useQuery(
     ["NewsData", page],
-    () =>
-      axios(
-        `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.REACT_APP_NEWS_API_KEY}&pagesize=10&page=${page}`
-      ),
+    () => axios(`/news`, { params: page }),
     {
       refetchOnWindowFocus: false,
       refetchOnMount: false,
@@ -47,6 +44,8 @@ function News() {
   const handleChange = (event, value) => {
     setPage(value);
   };
+
+  console.log(data);
 
   const scrollToTop = () => {
     myRef.current.scrollIntoView({ behavior: "smooth", inline: "nearest" });
