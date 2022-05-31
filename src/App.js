@@ -1,11 +1,9 @@
 import "./App.css";
 import Drawers from "./Drawers";
 import ButtonAppBar from "./Appbar";
-import Closecard from "./components/Closecard";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Routes, Route } from "react-router-dom";
 import News from "./components/News";
-import Graph from "./components/Graph";
 import Mainstocks from "./components/Mainstocks";
 import Addstock from "./components/Addstock";
 import Comparestock from "./components/Comparestock";
@@ -28,7 +26,7 @@ function App() {
   };
 
   const dHand = (ele) => {
-    setStockArr(() => stockArr.filter((el) => el != ele));
+    setStockArr(() => stockArr.filter((el) => el !== ele));
   };
 
 
