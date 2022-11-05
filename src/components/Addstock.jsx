@@ -62,7 +62,7 @@ const Paperh3 = styled.h5`
   margin-top: 5px;
   color: #f5f6fa;
 `;
-function Compare(props) {
+function Addstock(props) {
   const [input, setInput] = useState("");
   const [searchData, setSearchData] = useState("");
   const inputsref = useRef("");
@@ -104,7 +104,6 @@ function Compare(props) {
   return (
     <CompareContainer>
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
 
         <InputSearchBox>
           <Typography component="h1" variant="h5">
@@ -167,4 +166,4 @@ function Compare(props) {
   );
 }
 
-export default Compare;
+export default Addstock;
