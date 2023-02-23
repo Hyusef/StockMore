@@ -51,6 +51,7 @@ const InputSearchBox = styled.div`
   flex-direction: column;
   align-items: center;
   border: 1px solid blue;
+  background: darkgray;
 `;
 
 const Addbutton = styled(Button)`
