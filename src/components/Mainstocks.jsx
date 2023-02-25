@@ -6,11 +6,13 @@ import Button from "@mui/material/Button";
 import TextEmpty from "./TextEmpty";
 
 const CloseCardWrapper = styled.div`
-  display: flex;
+display: flex;
   flex-wrap: wrap;
   width: 75vw;
   justify-content: flex-start;
   box-sizing: border-box;
+  justify-content:space-around;
+
 
   @media (max-width: 600px) {
     justify-content: center;
@@ -21,8 +23,9 @@ const CloseCardWrapper = styled.div`
 
 const Flexdiv = styled.div`
   display: flex;
+  align-items:center;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   button {
     margin: 15px;
   }
@@ -54,7 +57,7 @@ function Mainstocks({ stockArr, dHand }) {
           </Button>
         )}
         {stockArr.length === 0 && (
-          <TextEmpty text={"Your Dashboard is Empty."} />
+          <TextEmpty text={"Your Dashboard is Empty"} />
         )}
       </div>
     </Flexdiv>
