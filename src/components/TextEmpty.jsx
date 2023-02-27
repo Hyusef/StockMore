@@ -22,7 +22,7 @@ const Header = styled.h1`
 `;
 
 function TextEmpty({ text }) {
-  return <Header> {text}</Header>;
+  return <Header>{text}</Header>;
 }
 
 export default TextEmpty;

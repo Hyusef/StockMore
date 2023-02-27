@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CardWrapper from "./CardWrapper";
-
 function Closecard({ symbol, dHand }) {
   const [quotesData, setQuotesData] = useState([]);
   const [isLoading, setIsLoading] = useState([]);
@@ -17,16 +16,14 @@ function Closecard({ symbol, dHand }) {
         }, 500);
       })
       .catch((err) => console.log(err));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  let isBullish = false;
+  let isBullish = false;  
   const qts = quotesData.regularMarketPrice;
   const pqts = quotesData.regularMarketPreviousClose;
   if (qts > pqts) {
     isBullish = true;
   }
-
   return (
     <div>
       <CardWrapper
