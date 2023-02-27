@@ -1,8 +1,8 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
+import AppBar from '@material-ui/core/AppBar';
+import Box from "@material-ui/core/Box";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 
 export default function ButtonAppBar(props) {
@@ -14,8 +14,8 @@ export default function ButtonAppBar(props) {
         bgcolor: "#white",
       }}
     >
-      <AppBar position="static" sx={{ bgcolor: "black" }}>
-        <Toolbar>
+      <AppBar position="static" style={{ background: '#2E3B55' }} >
+        <Toolbar >
           <IconButton
             color="inherit"
             aria-label="open drawer"
