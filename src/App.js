@@ -3,10 +3,10 @@ import Drawers from "./Drawers";
 import ButtonAppBar from "./Appbar";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Routes, Route } from "react-router-dom";
-import News from "./components/News";
-import Mainstocks from "./components/Mainstocks";
-import Addstock from "./components/Addstock";
-import Comparestock from "./components/Comparestock";
+import News from "./Pages/News";
+import Dashboard from "./Pages/Dashboard";
+import Addstock from "./Pages/AddStock";
+import Comparestock from "./Pages/CompareStock";
 import { useState } from "react";
 const queryClient = new QueryClient();
 
@@ -39,7 +39,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Mainstocks stockArr={stockArr} dHand={dHand} />}
+              element={<Dashboard stockArr={stockArr} dHand={dHand} />}
             />
             <Route
               path="/compare"
