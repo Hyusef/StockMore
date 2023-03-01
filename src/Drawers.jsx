@@ -36,7 +36,7 @@ export default function Drawers(props) {
       <img
         alt="logo"
         src={logostock}
-        style={{ width: "200px", padding: "10px" }}
+        style={{ width: "200px", padding: "10px", }}
       ></img>
       <Divider sx={{ bgcolor: "#4f4f4f" }} />
       <List>
