@@ -1,13 +1,17 @@
 import "./App.css";
+import { lazy } from 'react';
 import Drawers from "./Drawers";
 import ButtonAppBar from "./Appbar";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Routes, Route } from "react-router-dom";
-import News from "./Pages/News";
-import Dashboard from "./Pages/Dashboard";
-import Addstock from "./Pages/AddStock";
-import Comparestock from "./Pages/CompareStock";
 import { useState } from "react";
+import LoaderFallback from './components/LoaderFallback'
+
+const Addstock = LoaderFallback(lazy(() => import("./Pages/AddStock")))
+const News = LoaderFallback(lazy(() => import('./Pages/News')))
+const Comparestock = LoaderFallback(lazy(() => import('./Pages/CompareStock')))
+const Dashboard = LoaderFallback(lazy(() => import('./Pages/Dashboard')))
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -23,6 +27,7 @@ function App() {
       return;
     }
     setStockArr((oldArray) => [...oldArray, ele]);
+    console.log('mo');
   };
 
   const dHand = (ele) => {
@@ -39,7 +44,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Dashboard stockArr={stockArr} dHand={dHand} />}
+              element={<Dashboard handleArray={handleArray} stockArr={stockArr} dHand={dHand} />}
             />
             <Route
               path="/compare"
