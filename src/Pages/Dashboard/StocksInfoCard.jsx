@@ -36,7 +36,6 @@ const Cost = styled.h4`
     `;
   }}
 `;
-
 const CostWrapper = styled.div`
   display: flex;
   align-items: center;
