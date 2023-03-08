@@ -24,7 +24,6 @@ ChartJS.register(
 
 function StockInfoGraph({ symbol }) {
     const [histData, setHistData] = useState([]);
-
     useEffect(() => {
         const pastWeek = format(subDays(new Date(), 7), "yyyy-MM-dd");
         const option = [symbol, pastWeek];
@@ -32,7 +31,6 @@ function StockInfoGraph({ symbol }) {
             setHistData(res.data);
         });
     }, [symbol]);
-
     const closes = [];
     const dates = [];
     histData.forEach((el) => {
