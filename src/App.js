@@ -1,7 +1,7 @@
 import "./App.css";
 import { lazy } from 'react';
-import Drawers from "./Drawers";
-import ButtonAppBar from "./Appbar";
+import Drawers from "./components/Drawers";
+import ButtonAppBar from "./components/Appbar";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
