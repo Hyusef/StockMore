@@ -38,7 +38,6 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <ButtonAppBar toggleDrawer={toggleDrawer} />
         <div className="flexy">
           <Drawers toggleDrawer={toggleDrawer} open={open} />
           <Routes>
