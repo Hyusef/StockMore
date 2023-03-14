@@ -20,64 +20,65 @@ import { Deutschebank } from '@styled-icons/simple-icons/Deutschebank';
 
 export const AppleLogo = styled(Apple)`
   width:50px;
-  color:#000000;
+  color:#FFFDFA;
 `
 export const AmazonLogo = styled(Amazon)`
   width:50px;
-  color:#FF9900;
+  color:#FFFDFA;
 `
 export const IbmLogo = styled(Ibm)`
   width:50px;
-  color:#006699;
+  color:#FFFDFA;
 `
 export const MetaLogo = styled(Meta)`
   width:50px;
-  color:#4267B2;
+  color:#FFFDFA;
 `
 export const MicrosoftLogo = styled(Microsoft)`
   width:50px;
-  color: #008ad7;
+  color: #FFFDFA;
 `
 export const MercedesLogo = styled(Mercedes)`
   width:50px;
-  color:white;
+  color:#FFFDFA;
 `
 export const BmwLogo = styled(Bmw)`
   width:50px;
-  color: #133a7c;
+  color: #FFFDFA;
 `
 export const FordLogo = styled(Ford)`
   width:50px;
-  color:#2a6bac;
+  color:#FFFDFA;
 `
 export const VolkswagenLogo = styled(Volkswagen)`
   width:50px;
-  color:#2a6bac;
+  color:#FFFDFA;
 `
 export const ToyotaLogo = styled(Toyota)`
   width:50px;
- background-image: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%);
- background-blend-mode: lighten;
+/*  background-image: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%);
+ background-blend-mode: lighten; */
+ color:#FFFDFA;
 `
 export const PaypalLogo = styled(Paypal)`
   width:50px;
-  color:#e83860;
+  color:#FFFDFA;
 `
 export const VisaLogo = styled(Visa)`
   width:50px;
-  color:#6935D3 ;
+  color:#FFFDFA ;
 `
 export const ChaseLogo = styled(Chase)`
   width:50px;
-  color:#117ACA ;
+  color:#FFFDFA ;
 `
 export const BarclaysLogo = styled(Barclays)`
   width:50px;
-  color:white,
+  color:#FFFDFA;
 `
 export const DeutschebankLogo = styled(Deutschebank)`
   width:50px;
-  color:#0018a8  ;
+  color:#FFFDFA ;
 `
 export const LogoContainer = styled.div`
     border-radius:5px;
