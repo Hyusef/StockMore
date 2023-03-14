@@ -99,17 +99,16 @@ function SelectedStocks({ stockArr, dHand, handleArray }) {
   return (
     <Flexdiv>
       {stockArr.length < 3 && <>
-        <h1 style={{ color: 'white', fontFamily: 'Ibm Plex Sans' }}>
+        <h3 style={{ color: '#cccccc', fontFamily: 'Ibm Plex Sans' }}>
           Choose atleast 3 stocks from the lists below
-        </h1>
-        <h2 style={{ color: 'white' }} >You have added {chosen} stocks</h2>
+        </h3>
+        <h4 style={{ color: '#cccccc', margin: '0px' }} >You have added {chosen} stocks</h4>
         <TrackButton disabled={!(chosen >= 3)} onClick={() => handleStockFetch(initialAdded)}>Track Stocks</TrackButton>
         <ListsContext.Provider value={{ setChosen, chosen, initialAdded, setInitialAdded, handleArray }}>
           <ListsContainer />
         </ListsContext.Provider>
       </>
       }
-
       <CloseCardWrapper>
         {!showMore &&
           stockArr.slice(0, 3).map((el) => {
