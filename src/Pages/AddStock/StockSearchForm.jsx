@@ -10,9 +10,22 @@ const InputSearchBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid blue;
-  background: darkgray;
+  border-radius:5px;
+  background:rgba(3.1%,3.1%,10.6%,0.3);
+  /* background:rgba(0, 0, 0, 0.3); */
+  color:#cccccc;
 `;
+
+
+const TextfieldStyle = {
+    input: { color: '#cccccc' },
+
+    "& .MuiOutlinedInput-root": {
+        "&.Mui-focused fieldset": {
+            borderColor: "#cccccc",
+        }
+    }
+}
 
 const handleClick = () => {
     console.log('test');
@@ -40,12 +53,17 @@ function StockSearchForm({ handleSubmit, inputsref }) {
                     autoComplete="stock"
                     autoFocus
                     inputRef={inputsref}
+                    sx={TextfieldStyle}
+                    InputLabelProps={{
+                        style: { color: '#ccc', },
+                    }}
                 />
+
                 <Button
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2, background: "linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4)" }}
                     onClick={handleClick}
                 >
                     Search Stock
