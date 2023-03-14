@@ -10,7 +10,7 @@ const Addbutton = styled(Button)`
 `;
 
 const StyledPaper = styled(Paper)`
-  background: #346beb;
+ background:rgba(0, 0, 0, 0.125);
   margin: 10px;
   width: 250px;
   margin-bottom: 50px;
@@ -29,25 +29,25 @@ const Paperh3 = styled.h5`
   color: #f5f6fa;
 `
 
-function StockCard({ company, handleArray, handleAlert }) {  
-    return (
-        <>
-            <StyledPaper>
-                <Paperh3>{company["exchange"]}</Paperh3>
-                <Paperh3>{company["shortname"]}</Paperh3>
-                <Paperh3>{company["symbol"]}</Paperh3>
-                <Addbutton
-                    variant="contained"
-                    onClick={() =>
-                        handleArray(company["symbol"], handleAlert(company["symbol"]))
-                    }
-                >
-                    <AddIcon />
-                    Add to Dashboard
-                </Addbutton>
-            </StyledPaper>
-        </>
-    )
+function StockCard({ company, handleArray, handleAlert }) {
+  return (
+    <>
+      <StyledPaper>
+        <Paperh3>{company["exchange"]}</Paperh3>
+        <Paperh3>{company["shortname"]}</Paperh3>
+        <Paperh3>{company["symbol"]}</Paperh3>
+        <Addbutton
+          variant="contained"
+          onClick={() =>
+            handleArray(company["symbol"], handleAlert(company["symbol"]))
+          }
+        >
+          <AddIcon />
+          Add to Dashboard
+        </Addbutton>
+      </StyledPaper>
+    </>
+  )
 }
 
 export default StockCard
