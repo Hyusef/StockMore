@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
- const StockCardsContainer = styled.div`
+const StockCardsContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 70%;
@@ -8,9 +8,10 @@ import styled from "styled-components";
   justify-content: center;
   overflow: hidden;
   margin: 80px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 5px 15px;
   align-items: center;
-  background: #dedede;
+  background:rgba(3.1%,3.1%,10.6%,0.25);
+
 `;
 
 export default StockCardsContainer
