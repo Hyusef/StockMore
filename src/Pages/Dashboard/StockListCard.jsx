@@ -16,16 +16,20 @@ const LogoContainer = styled.div`
 const TextContainer = styled.div`
     border-radius:5px;
     padding:3px;
-    margin:5px;
-    font-family: 'IBM Plex Sans';
+    margin-left:3px
+    margin-top:20px
+    font-family:'IBM Plex Sans';
     font-weight:bold;
-    color:#edf4ff;
+    color:#6D6D64;
+    font-size:1rem;
 `
+
+
 const AddButton = styled.button`
 display:inline-block;
 padding:0.35em 1.2em;
 border:0.1em solid white;
-border-radius:0.12em;
+border-radius:0.2em;
 box-sizing: border-box;
 text-decoration:none;
 font-family:'IBM Plex Sans';
@@ -38,14 +42,19 @@ cursor:pointer;
     color:#adceff;
     background-color:#000d21;
     }
+
+    &:disabled {
+      opacity:9%;
+      cursor:not-allowed
+    }
 `
 const Maindiv = styled.div`
 border-radius:10px;
-border:1px solid gray;
 padding:5px;
 display:flex;
 flex-direction:row;
-background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+background:rgba(0, 0, 0, 0.5);
+/* background-image: linear-gradient(to top, #09203f 0%, #537895 100%); */
 margin:5px;
 `
 //UP For StockListCard
@@ -78,13 +87,13 @@ const StockListCard = ({ company, }) => {
             'Deutschebank': <DeutschebankLogo />,
           }[company.name]}
         </LogoContainer>
-        <TextContainer>
-          <p>Company: {company.name}</p>
-          <p>Sector: {company.sector}</p>
-          <p>Country: {company.country}</p>
-          <p>Symbol: {company.symbol}</p>
+          <TextContainer>
+            <p>Company: {company.name}</p>
+            <p>Sector: {company.sector}</p>
+            <p>Country: {company.country}</p>
+            <p>Symbol: {company.symbol}</p>
           <AddButton onClick={incChosen}>Add Stock</AddButton>
-        </TextContainer>
+          </TextContainer>
       </Maindiv>
     </>
   )
