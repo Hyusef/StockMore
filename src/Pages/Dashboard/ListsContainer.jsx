@@ -3,9 +3,9 @@ import StockList from './StockList';
 import styled from 'styled-components';
 
 const StockListContainer = styled.div`
-border:1px solid white;
 width:100vw;
-background:#08081b
+background:rgba(0, 0, 0, 0.2);
+margin-bottom:130px;
 `
 
 const TechCompanies =
