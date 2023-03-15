@@ -10,13 +10,14 @@ const Addbutton = styled(Button)`
 `;
 
 const StyledPaper = styled(Paper)`
- background:rgba(0, 0, 0, 0.125);
+ background:rgba(0, 0, 0, 0.35);
   margin: 10px;
   width: 250px;
   margin-bottom: 50px;
   height: 180px;
   display: flex;
   flex-direction: column;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 2px;
   align-items: center;
   Button {
     margin-top: auto;
