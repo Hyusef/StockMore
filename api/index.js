@@ -8,11 +8,13 @@ const axios = require("axios");
 
 require("dotenv").config();
 
+app.set("port", port);
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(bodyParser.json());
-app.use(express.static("build"));
+// app.use(express.static("build"));
 
 app.get("/stock", (req, res) => {
   const symbol = req.query["0"];
