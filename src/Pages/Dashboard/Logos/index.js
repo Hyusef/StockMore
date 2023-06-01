@@ -21,64 +21,110 @@ import { Deutschebank } from '@styled-icons/simple-icons/Deutschebank';
 export const AppleLogo = styled(Apple)`
   width:50px;
   color:#FFFDFA;
+  @media only screen and (max-width: 900px) {
+  width:35px;
+  }
+
 `
 export const AmazonLogo = styled(Amazon)`
   width:50px;
   color:#FFFDFA;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const IbmLogo = styled(Ibm)`
   width:50px;
   color:#FFFDFA;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const MetaLogo = styled(Meta)`
   width:50px;
   color:#FFFDFA;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const MicrosoftLogo = styled(Microsoft)`
   width:50px;
   color: #FFFDFA;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const MercedesLogo = styled(Mercedes)`
   width:50px;
   color:#FFFDFA;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const BmwLogo = styled(Bmw)`
   width:50px;
   color: #FFFDFA;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const FordLogo = styled(Ford)`
   width:50px;
   color:#FFFDFA;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const VolkswagenLogo = styled(Volkswagen)`
   width:50px;
   color:#FFFDFA;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const ToyotaLogo = styled(Toyota)`
   width:50px;
 /*  background-image: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%);
  background-blend-mode: lighten; */
  color:#FFFDFA;
+   @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const PaypalLogo = styled(Paypal)`
   width:50px;
   color:#FFFDFA;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const VisaLogo = styled(Visa)`
   width:50px;
   color:#FFFDFA ;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const ChaseLogo = styled(Chase)`
   width:50px;
   color:#FFFDFA ;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const BarclaysLogo = styled(Barclays)`
   width:50px;
   color:#FFFDFA;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const DeutschebankLogo = styled(Deutschebank)`
   width:50px;
   color:#FFFDFA ;
+    @media only screen and (max-width: 900px) {
+  width:35px;
+  }
 `
 export const LogoContainer = styled.div`
     border-radius:5px;
