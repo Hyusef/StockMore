@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from "styled-components";
 import { Line } from "react-chartjs-2";
+import { Select, MenuItem } from "@mui/material";
+
 
 const LineContainer = styled.div`
   padding: 20px;
@@ -42,6 +44,7 @@ function StocksChart({ dates, datasets }) {
                     }}
                     options={chartOptions}
                 />
+                  
             </LineContainer>
         </>
     )
