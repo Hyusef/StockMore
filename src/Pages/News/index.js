@@ -20,13 +20,15 @@ function News() {
     const myRef = useRef(null);
     const { data, error, isLoading, isPreviousData } = useQuery(
         ["NewsData", page],
-        () => axios(`/news`, { params: page }),
+        () => axios(`http://localhost:5000/biznews`, { params: page }),
         {
             refetchOnWindowFocus: false,
             refetchOnMount: false,
             keepPreviousData: true,
         }
     );
+
+
     const handleChange = (_, value) => {
         setPage(value);
     };
@@ -42,7 +44,7 @@ function News() {
     return (
         <div>
             <NewsCardsWrapper ref={myRef}>
-                {data.data.articles.map((article, index) => {
+                {data?.data?.map((article, index) => {
                     return (
                         <NewsCard key={index} article={article} />
                     );
