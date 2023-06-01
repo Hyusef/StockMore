@@ -61,11 +61,12 @@ function StocksInfoCard({ isLoading, isBullish, qts, symbol, dHand, quotesData }
         {!isLoading && (
           <>
             <Textfit mode="multi">
-              {quotesData.symbol} | {quotesData.longName}
+              {quotesData.price.symbol} |  {quotesData.price.longName}
             </Textfit>
 
+
             <h4>
-              {quotesData.fullExchangeName} | {quotesData.currency}
+              {quotesData.price.exchangeName} |  {quotesData.price.currency}
             </h4>
             {quotesData.region}
             <CostWrapper>
@@ -87,7 +88,7 @@ function StocksInfoCard({ isLoading, isBullish, qts, symbol, dHand, quotesData }
             </CostWrapper>
             <StockInfoGraph symbol={symbol} />
             {showDel && (
-              <Button onClick={() => dHand(quotesData.symbol)}>
+              <Button onClick={() => dHand(quotesData?.price?.symbol)}>
                 <DeleteOutlineIcon />
               </Button>
             )}
