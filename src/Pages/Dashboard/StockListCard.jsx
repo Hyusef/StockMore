@@ -14,39 +14,47 @@ const LogoContainer = styled.div`
     margin:5px;
 `
 const TextContainer = styled.div`
+display:flex;
+flex-direction:column;
+align-items:center;
+`
+const Text = styled.div`
     border-radius:5px;
     padding:3px;
-    margin-left:3px
-    margin-top:20px
-    font-family:'IBM Plex Sans';
+    font-family:'Roboto';
     font-weight:bold;
-    color:#6D6D64;
+    color:hsl(210, 105%, 32%);
     font-size:1rem;
+
 `
-
-
 const AddButton = styled.button`
-display:inline-block;
+margin:0 !important;
+background-color:hsl(210, 50%, 22%);
+align-self:start;
 padding:0.35em 1.2em;
-border:0.1em solid white;
+border:0.1em solid hsl(210, 50%, 22%);
 border-radius:0.2em;
-box-sizing: border-box;
+box-sizing:border-box;
+margin-bottom:3px;
 text-decoration:none;
-font-family:'IBM Plex Sans';
+font-family:'Roboto';
 font-weight:bold;
-color:black;
+color:hsl(210, 90%, 0%);
 text-align:center;
 transition: all 0.2s;
 cursor:pointer;
-&:hover{
-    color:#adceff;
-    background-color:#000d21;
+&:hover{  
+    color:hsl(210, 105%, 120%);
+    background-color:hsl(210, 50%, 15%);
+    border:0.1em solid hsl(210, 50%, 22%) ;
+
     }
 
     &:disabled {
       opacity:9%;
       cursor:not-allowed
     }
+
 `
 const Maindiv = styled.div`
 border-radius:10px;
@@ -54,12 +62,18 @@ padding:5px;
 display:flex;
 flex-direction:row;
 background:rgba(0, 0, 0, 0.5);
-/* background-image: linear-gradient(to top, #09203f 0%, #537895 100%); */
 margin:5px;
+width:13vw;
+flex-wrap:wrap;
+border:1px solid hsl(210, 105%, 12%);
+@media only screen and (max-width: 900px) {
+  width:20vw;
+  }
 `
 //UP For StockListCard
 const StockListCard = ({ company, }) => {
   let { setChosen, handleArray, setInitialAdded } = useContext(ListsContext);
+
   const incChosen = (e) => {
     setChosen(chosen => chosen + 1);
     e.currentTarget.disabled = true
@@ -87,13 +101,14 @@ const StockListCard = ({ company, }) => {
             'Deutschebank': <DeutschebankLogo />,
           }[company.name]}
         </LogoContainer>
-          <TextContainer>
-            <p>Company: {company.name}</p>
-            <p>Sector: {company.sector}</p>
-            <p>Country: {company.country}</p>
-            <p>Symbol: {company.symbol}</p>
-          <AddButton onClick={incChosen}>Add Stock</AddButton>
-          </TextContainer>
+        <TextContainer>
+          <Text>
+            <p>{company.name}</p>
+            <p>{company.country}</p>
+            <p>{company.symbol}</p>
+          </Text>
+        <AddButton onClick={incChosen}><span>Add</span></AddButton>
+        </TextContainer>
       </Maindiv>
     </>
   )
