@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const StockListContainer = styled.div`
 width:100vw;
 background:rgba(0, 0, 0, 0.2);
+border:0.1px solid hsl(210, 105%, 35%);
 margin-bottom:130px;
 `
 
@@ -13,31 +14,31 @@ const TechCompanies =
         {
             'name': 'Apple',
             'sector': 'Technology',
-            'country': 'US',
+            'country': 'U.S',
             'symbol': 'AAPL'
         },
         {
             'name': 'Microsoft',
             'sector': 'Technology',
-            'country': 'US',
+            'country': 'U.S',
             'symbol': 'MSFT'
         },
         {
             'name': 'Amazon',
             'sector': 'Technology',
-            'country': 'US',
+            'country': 'U.S',
             'symbol': 'AMZN'
         },
         {
             'name': 'Ibm',
             'sector': 'Technology',
-            'country': 'US',
+            'country': 'U.S',
             'symbol': 'IBM'
         },
         {
             'name': 'Meta',
             'sector': 'Technology',
-            'country': 'US',
+            'country': 'U.S',
             'symbol': 'META'
         }
     ];
@@ -47,32 +48,32 @@ const AutomotiveCompanies =
         {
             'name': 'Toyota',
             'sector': 'Automotive',
-            'country': 'US',
+            'country': 'U.S',
             'symbol': 'TYT.L'
         },
         {
             'name': 'Mercedes',
             'sector': 'Automotive',
-            'country': 'US',
+            'country': 'U.S',
             'symbol': 'MBG.DE'
         },
         {
             'name': 'Volkswagen',
             'sector': 'Automotive',
-            'country': 'US',
+            'country': 'U.S',
             'symbol': 'VOW3.DE'
 
         },
         {
             'name': 'Ford',
             'sector': 'Automotive',
-            'country': 'US',
+            'country': 'U.S',
             'symbol': 'F'
         },
         {
             'name': 'Bmw',
             'sector': 'Automotive',
-            'country': 'US',
+            'country': 'U.S',
             'symbol': 'BMW.DE'
         }
     ];
