@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 
 
 function NewsCard({ article }) {
+    console.log(article.img)
     return (
         <>
             <Card
@@ -26,9 +27,9 @@ function NewsCard({ article }) {
                     component="img"
                     height="140"
                     image={
-                        article.urlToImage === null
-                            ? "https://media.istockphoto.com/photos/online-news-in-mobile-phone-close-up-of-smartphone-screen-man-reading-picture-id1065782416?b=1&k=20&m=1065782416&s=170667a&w=0&h=DeacwxQl_KZdhtkk6eHxxGunzYuHLfi6S6rvM3CsVeg="
-                            : article.urlToImage
+                        article?.img === null
+                            ? "https://images.pexels.com/photos/177557/pexels-photo-177557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            : article?.img?.o
                     }
                     alt="news"
                 />
