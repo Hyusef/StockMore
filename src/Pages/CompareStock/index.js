@@ -5,6 +5,8 @@ import styled from "styled-components";
 import TextEmpty from "../../components/TextEmpty";
 import axios from "axios";
 import StocksChart from "./StocksChart";
+import { Select, MenuItem, InputLabel } from "@mui/material";
+
 
 const StyledContainer = styled.div`
   width: 100vw;
@@ -16,7 +18,14 @@ const StyledContainer = styled.div`
 //Add options to choose from different dates and handle it in the backend
 function Comparestock({ stockArr }) {
     const [stocksData, setStocksData] = useState("");
-    let days = 3;
+    const [days, setDays] = useState(8);
+
+    const handleDayChange = (e) => {
+        setDays(e.target.value);
+    }
+    console.log(days);
+
+
     useEffect(() => {
         const date = format(subDays(new Date(), days), "yyyy-MM-dd");
         const option = [stockArr, date];
@@ -68,6 +77,21 @@ function Comparestock({ stockArr }) {
             <StyledContainer>
                 {stockArr.length === 0 && <TextEmpty text={"No Stocks To Show"} />}
                 <StocksChart datasets={datasets} dates={dates} />
+                <InputLabel id="demo" style={{ marginLeft: '35vw',color:'hsl(210, 105%, 92%)' }}>Choose Date</InputLabel>
+                <Select
+                    onChange={handleDayChange}
+                    labelId="demo"
+                    style={{ width: '150px', marginLeft: '35vw',color:'hsl(210, 105%, 92%)' }}>
+
+                    <MenuItem disabled value="">
+                        <em>Choose one of the date values</em>
+                    </MenuItem>
+                    <MenuItem value={2}>1D</MenuItem>
+                    <MenuItem value={8}>1W</MenuItem>
+                    <MenuItem value={31}>1M</MenuItem>
+                    <MenuItem value={181}>6M</MenuItem>
+                    <MenuItem value={366}>1Y</MenuItem>
+                </Select>
             </StyledContainer>
         </>
     );
