@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
-import StocksCardContainer from "./StocksCardContainer";
+import StocksCardContainer from "./StocksCardContainer.jsx";
 import ListsContainer from "./ListsContainer";
 
 const Flexdiv = styled.div`
   display: flex;
+  flex-wrap:wrap;
   align-items:center;
   flex-direction: column;
   width: 100%;
@@ -26,7 +27,7 @@ const TrackButton = styled.button`
   color: #36395A;
   cursor: pointer;
   display: inline-flex;
-  font-family: "JetBrains Mono",monospace;
+  font-family: "Roboto",sans-serif;
   height: 48px;
   justify-content: center;
   line-height: 1;
@@ -89,20 +90,19 @@ function SelectedStocks({ stockArr, dHand, handleArray }) {
 
   const handleStockFetch = (e) => {
     e.map(ele => handleArray(ele));
-    console.log(stockArr);
+    setInitialAdded([]);
+    setChosen(0);
   }
 
-
   useEffect(() => {
-    console.log(stockArr);
   }, [stockArr, initialAdded, chosen]);
   return (
     <Flexdiv>
-      {stockArr.length < 3 && <>
-        <h3 style={{ color: '#cccccc', fontFamily: 'Ibm Plex Sans' }}>
+      {(stockArr.length == 0) && <>
+        <h3 style={{ color: '#cccccc', fontFamily: 'Roboto' }}>
           Choose atleast 3 stocks from the lists below
         </h3>
-        <h4 style={{ color: '#cccccc', margin: '0px' }} >You have added {chosen} stocks</h4>
+        <h4 style={{ color: '#cccccc', margin: '0px', fontFamily: 'Roboto' }} >You have added {chosen} stocks</h4>
         <TrackButton disabled={!(chosen >= 3)} onClick={() => handleStockFetch(initialAdded)}>Track Stocks</TrackButton>
         <ListsContext.Provider value={{ setChosen, chosen, initialAdded, setInitialAdded, handleArray }}>
           <ListsContainer />
