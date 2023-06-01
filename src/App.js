@@ -30,7 +30,8 @@ function App() {
     console.log('mo');
   };
 
-  const dHand = (ele) => {
+
+  const dHand = (ele) => {  
     setStockArr(() => stockArr.filter((el) => el !== ele));
   };
 
