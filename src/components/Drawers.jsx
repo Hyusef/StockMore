@@ -6,7 +6,7 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import logostock from "../images/logostock.png";
+import logostock from "../images/Logostocck.png";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import CompareIcon from "@mui/icons-material/Compare";
