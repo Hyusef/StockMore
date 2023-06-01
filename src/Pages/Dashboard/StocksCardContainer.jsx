@@ -1,12 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import StocksInfoCard from './StocksInfoCard';
+import StocksInfoCard from './StocksInfoCard.jsx';
 
 function StocksCardContainer({ symbol, dHand }) {
     const [quotesData, setQuotesData] = useState([]);
     const [isLoading, setIsLoading] = useState([]);
-
     useEffect(() => {
         axios
             .get("/quotes", { params: symbol })
@@ -15,13 +14,14 @@ function StocksCardContainer({ symbol, dHand }) {
                 setTimeout(() => {
                     setIsLoading(false);
                 }, 500);
+                console.log(res.data);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log(err));  
     }, [symbol]);
 
     let isBullish = false;
-    const qts = quotesData.regularMarketPrice;
-    const pqts = quotesData.regularMarketPreviousClose;
+    const qts = quotesData?.price?.regularMarketPrice;
+    const pqts = quotesData?.price?.regularMarketPreviousClose;
     if (qts > pqts) {
         isBullish = true;
     }
@@ -35,6 +35,7 @@ function StocksCardContainer({ symbol, dHand }) {
                 dHand={dHand}
                 quotesData={quotesData}
             />
+
         </>
     );
 }
