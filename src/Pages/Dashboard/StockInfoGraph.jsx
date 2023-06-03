@@ -33,7 +33,7 @@ function StockInfoGraph({ symbol }) {
     }, [symbol]);
     const closes = [];
     const dates = [];
-    if (histData) {
+    if (histData.length) {
         histData?.forEach((el) => {
             const histDate = el["date"].slice(0, 10);
             dates.push(histDate);
