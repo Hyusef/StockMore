@@ -28,6 +28,8 @@ function News() {
         }
     );
 
+        console.log(data);
+
 
     const handleChange = (_, value) => {
         setPage(value);
@@ -49,7 +51,7 @@ function News() {
                         <NewsCard key={index} article={article} />
                     );
                 })}
-            </NewsCardsWrapper>
+            </NewsCardsWrapper> 
             <NewsPagination page={page} setPage={setPage}
                 isPreviousData={isPreviousData}
                 handleChange={handleChange}
