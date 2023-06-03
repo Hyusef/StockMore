@@ -61,12 +61,12 @@ function StocksInfoCard({ isLoading, isBullish, qts, symbol, dHand, quotesData }
         {!isLoading && (
           <>
             <Textfit mode="multi">
-              {quotesData.price.symbol} |  {quotesData.price.longName}
+              {quotesData?.price?.symbol} |  {quotesData?.price?.longName}
             </Textfit>
 
 
             <h4>
-              {quotesData.price.exchangeName} |  {quotesData.price.currency}
+              {quotesData?.price?.exchangeName} |  {quotesData?.price?.currency}
             </h4>
             {quotesData.region}
             <CostWrapper>

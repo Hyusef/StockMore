@@ -5,10 +5,10 @@ const bodyParser = require("body-parser");
 const yahooFinance = require("yahoo-finance2").default;
 const cors = require("cors");
 const axios = require("axios");
-
 require("dotenv").config();
 
 app.set("port", port);
+
 
 app.use(cors());
 app.use(express.json());

@@ -38,7 +38,7 @@ function Addstock(props) {
     }, [input]);
 
     if (searchData) {
-        searchData.quotes.map((ele) => {
+        searchData?.quotes?.map((ele) => {
             if (ele["isYahooFinance"] === true) {
                 bestMatch.push(ele);
             }
