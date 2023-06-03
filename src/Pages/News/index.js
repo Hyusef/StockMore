@@ -45,13 +45,13 @@ function News() {
 
     return (
         <div>
-          {/*   <NewsCardsWrapper ref={myRef}>
+            <NewsCardsWrapper ref={myRef}>
                 {data?.data?.map((article, index) => {
                     return (
                         <NewsCard key={index} article={article} />
                     );
                 })}
-            </NewsCardsWrapper> */}
+            </NewsCardsWrapper> 
             <NewsPagination page={page} setPage={setPage}
                 isPreviousData={isPreviousData}
                 handleChange={handleChange}
