@@ -29,7 +29,7 @@ function Addstock(props) {
 
     useEffect(() => {
         axios
-            .get("/search", { params: input })
+            .get("/api/search", { params: input })
             .then((res) => {
                 setSearchData(res.data);
             })
