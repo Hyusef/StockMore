@@ -27,7 +27,7 @@ function StockInfoGraph({ symbol }) {
     useEffect(() => {
         const pastWeek = format(subDays(new Date(), 7), "yyyy-MM-dd");
         const option = [symbol, pastWeek];
-        axios.get("/stock", { params: option }).then((res) => {
+        axios.get("/api/stock", { params: option }).then((res) => {
             setHistData(res.data);
         });
     }, [symbol]);

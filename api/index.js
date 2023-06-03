@@ -16,7 +16,7 @@ app.use(express.urlencoded());
 app.use(bodyParser.json());
 // app.use(express.static("build"));
 
-app.get("/stock", (req, res) => {
+app.get("/api/stock", (req, res) => {
   const symbol = req.query["0"];
   const date = req.query["1"];
   const queryDate = { period1: req.query[1] };
@@ -32,7 +32,7 @@ app.get("/stock", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-app.get("/stocks", (req, res) => {
+app.get("/api/stocks", (req, res) => {
   const symbols = req.query["0"];
   const date = req.query["1"];
   const queryDate = { period1: date };
@@ -53,7 +53,7 @@ app.get("/stocks", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-app.get('/trending', async (req, res) => {
+app.get('/api/trending', async (req, res) => {
   const queryOptions = { count: 5, lang: 'en-US' };
   const result = await yahooFinance.trendingSymbols('US', queryOptions);
   res.send(result)
@@ -61,7 +61,7 @@ app.get('/trending', async (req, res) => {
 app.get('/', async (req, res) => {
 })
 
-app.get("/quotes", (req, res) => {
+app.get("/api/quotes", (req, res) => {
   async function getQuotes() {
     const result = await yahooFinance.quoteSummary(req.query[0]);
     return result;
@@ -75,7 +75,7 @@ app.get("/quotes", (req, res) => {
   console.log(' function call')
 });
 
-app.get("/search", (req, res, next) => {
+app.get("/api/search", (req, res, next) => {
   async function getQuery() {
     const result = await yahooFinance.search(req.query[0]);
     return result;
@@ -85,7 +85,7 @@ app.get("/search", (req, res, next) => {
   });
 });
 
-app.get("/news", (req, res, next) => {
+app.get("/api/news", (req, res, next) => {
   const page = req.query["0"];
   async function getNews() {
     const result = await axios(
@@ -100,7 +100,7 @@ app.get("/news", (req, res, next) => {
     .catch((err) => res.send(err));
 });
 
-app.get("/biznews", (req, res, next) => {
+app.get("/api/biznews", (req, res, next) => {
   const options = {
     url: 'https://biztoc.p.rapidapi.com/news/latest',
     headers: {
@@ -124,7 +124,7 @@ app.get("/biznews", (req, res, next) => {
 });
 
 
-app.get("/get-initial-company-data", async (req, res, next) => {
+app.get("/api/get-initial-company-data", async (req, res, next) => {
   const keys = Object.keys(req.query);
   const companiesData = await Promise.all(keys.map(async (e) => {
     const company = req.query[e];

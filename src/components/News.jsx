@@ -34,7 +34,7 @@ function News() {
   const myRef = useRef(null);
   const { data, error, isLoading, isPreviousData } = useQuery(
     ["NewsData", page],
-    () => axios(`/news`, { params: page }),
+    () => axios(`/api/news`, { params: page }),
     {
       refetchOnWindowFocus: false,
       refetchOnMount: false,

@@ -24,7 +24,7 @@ function Comparestock({ stockArr }) {
   useEffect(async () => {
     const date = format(subDays(new Date(), days), "yyyy-MM-dd");
     const option = [stockArr, date];
-    const res = await axios.get("/stocks", { params: option });
+    const res = await axios.get("/api/stocks", { params: option });
     setStocksData(res.data);
   }, []);
   const dates = [];

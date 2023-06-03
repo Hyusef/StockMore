@@ -20,7 +20,7 @@ function News() {
     const myRef = useRef(null);
     const { data, error, isLoading, isPreviousData } = useQuery(
         ["NewsData", page],
-        () => axios(`http://localhost:5000/biznews`, { params: page }),
+        () => axios(`/api/biznews`, { params: page }),
         {
             refetchOnWindowFocus: false,
             refetchOnMount: false,

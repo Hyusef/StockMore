@@ -8,7 +8,7 @@ function StocksCardContainer({ symbol, dHand }) {
     const [isLoading, setIsLoading] = useState([]);
     useEffect(() => {
         axios
-            .get("/quotes", { params: symbol })
+            .get("/api/quotes", { params: symbol })
             .then((res) => {
                 setQuotesData(res.data);
                 setTimeout(() => {

@@ -31,7 +31,7 @@ function Comparestock({ stockArr }) {
         const option = [stockArr, date];
         async function fetchStocksData() {
             try {
-                const res = await axios.get("/stocks", { params: option });
+                const res = await axios.get("/api/stocks", { params: option });
                 setStocksData(res.data);
             } catch (error) {
                 console.log(error);
