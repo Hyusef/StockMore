@@ -33,14 +33,14 @@ function StockInfoGraph({ symbol }) {
     }, [symbol]);
     const closes = [];
     const dates = [];
-    if (histData.length) {
+/*     if (histData.length) {
         histData?.forEach((el) => {
             const histDate = el["date"].slice(0, 10);
             dates.push(histDate);
             const histClose = +el["adjClose"].toFixed(2);
             closes.push(histClose);
        
-    })};
+    })}; */
     return (
         <div>
             <Line
