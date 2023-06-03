@@ -44,7 +44,7 @@ function StockInfoGraph({ symbol }) {
     console.log(histData)
     return (
         <div>
-  {/*           <Line
+            <Line
                 data={{
                     labels: dates,
                     datasets: [
@@ -57,7 +57,7 @@ function StockInfoGraph({ symbol }) {
                         },
                     ],
                 }}
-            /> */}
+            /> 
         </div>
     );
 }
